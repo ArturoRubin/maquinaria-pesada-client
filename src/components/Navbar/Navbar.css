@@ -1,0 +1,24 @@
+.Navbar{
+    background-color: #1876d1;
+    color: white;
+    height: 70px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Navbar .navbar-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.Navbar a{
+    text-decoration: none;
+    color: white;
+}
+
+.Navbar a:hover{
+    color: white;
+    font-weight: 700;
+}

@@ -1,0 +1,24 @@
+.Jumbotron{
+
+}
+.Jumbotron .content{
+    background-image: url(https://fondosmil.com/fondo/29826.jpg);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+}
+
+.Jumbotron .content-background{
+    background-color: rgba(0,0,0,.7);
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}

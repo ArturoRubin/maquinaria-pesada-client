@@ -1,0 +1,9 @@
+.TrustInUs{
+    background-color: #f45d01;
+    height: 300px;
+}
+
+.TrustInUs .content{
+    color: white;
+    font-size: 30px;
+}
