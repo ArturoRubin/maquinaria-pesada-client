@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Carousel } from 'primereact/carousel';
 import Jumbotron from '../../components/Jumbotron/Jumbotron';
 import TrustInUs from '../../components/TrustInUs/TrustInUs';
+import AnimationText from '../../components/AnimationText/AnimationText';
 
 
 import "./HomePage.css";
+import TextoAnimado from '../../components/AnimationText/AnimationText';
 
 
 function HomePage() {
@@ -54,9 +56,11 @@ function HomePage() {
     <div className='HomePage'>
       <Jumbotron />
       <TrustInUs />
+      
       <div className="card">
         <h1 className='mt-5'>Productos destacados</h1>
         <Carousel value={images} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={imageTemplate} />
+        <AnimationText />
       </div>
 
     </div>

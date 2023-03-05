@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -27,9 +28,16 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route
-          path="/profile"
+          path="/productos"
+          element={
+            <IsAnon>
+              <ProductPage />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/perfil"
           element={
             <IsPrivate>
               <ProfilePage />
@@ -38,7 +46,7 @@ function App() {
         />
 
         <Route
-          path="/signup"
+          path="/registrarse"
           element={
             <IsAnon>
               <SignupPage />
@@ -46,7 +54,7 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path="/iniciar-sesion"
           element={
             <IsAnon>
               <LoginPage />

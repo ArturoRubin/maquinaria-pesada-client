@@ -1,0 +1,15 @@
+.Product{
+    display: inline-block;
+    width: 100%;
+    max-width: 220px;
+}
+
+.Product img{
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.Product .p-card-title{
+    font-size: 20px;
+}

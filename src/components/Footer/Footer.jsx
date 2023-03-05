@@ -9,9 +9,9 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-    <a href="">Condiciones de uso</a>
-    <p>© 1996-2023, maquinariamexico.com, Inc. o sus afiliados</p>
+    <nav className="Footer">
+      <a href="">Condiciones de uso</a>
+      <p>© 1996-2023, maquinariamexico.com, Inc. o sus afiliados</p>
     </nav>
   );
 }

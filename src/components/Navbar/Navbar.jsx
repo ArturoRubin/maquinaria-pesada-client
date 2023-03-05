@@ -11,40 +11,35 @@ function Navbar() {
   return (
     <nav className="Navbar">
       <div className="navbar-title">
-        <span> Renta Maquinaria</span>
+        <Link to="/"> Renta Maquinaria</Link>
       </div>
       <div className="navbar-options">
-      <Link to="/">
-        <a className="mr-3">Home</a>
-      </Link>
+        <Link className="mr-3"to="/productos">
+          Productos
+        </Link>
 
-      {isLoggedIn && (
-        <>
-          <a onClick={logOutUser}>Logout</a>
+        {isLoggedIn && (
+          <>
+            <a onClick={logOutUser}>Cerrar Sesión</a>
+            <Link to="/perfil">
+              Perfil
+              {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
+            </Link>
+            <span>{user && user.name}</span>
+          </>
+        )}
 
-          <Link to="/profile">
-            <a>Profile</a>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
-
-          <span>{user && user.name}</span>
-        </>
-      )}
-
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <a className="mx-3">Sign Up</a>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <a className="mx-3">Login</a>{" "}
-          </Link>
-        </>
-      )}
+        {!isLoggedIn && (
+          <>
+            <Link className="mx-3" to="/registrarse">
+             Registrarse
+            </Link>
+            <Link className="mx-3" to="/iniciar-sesion">
+              Iniciar Sesión
+            </Link>
+          </>
+        )}
       </div>
-     
     </nav>
   );
 }

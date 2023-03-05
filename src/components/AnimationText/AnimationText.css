@@ -1,0 +1,33 @@
+.Animation-container {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    background-color: red
+  }
+  
+  .Animation-container .animate {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -20px;
+    margin-left: 0;
+    animation: mover 15s linear infinite;
+  }
+
+  .Animation-container .animate img{
+    margin: 0 0 0 150px;
+  }
+  
+  @keyframes mover {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+
+
+  
