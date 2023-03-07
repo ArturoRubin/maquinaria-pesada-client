@@ -37,6 +37,9 @@ function Navbar() {
             <Link className="mx-3" to="/iniciar-sesion">
               Iniciar Sesión
             </Link>
+            <Link to="/crear-producto">
+              Crear Producto
+            </Link>
           </>
         )}
       </div>

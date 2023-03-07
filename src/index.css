@@ -20,3 +20,20 @@ html, body{
   margin-right: auto;
 }
 
+.form-group + .form-group{
+  margin-top: 10px;
+}
+
+.form-label{
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.form-control{
+  width: 100%;
+}
+
+
+
+

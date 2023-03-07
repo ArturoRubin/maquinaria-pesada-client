@@ -1,0 +1,26 @@
+.ProductForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+
+}
+
+.ProductForm .form {
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.ProductForm .submit-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
