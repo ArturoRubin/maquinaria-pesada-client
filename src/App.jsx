@@ -33,9 +33,9 @@ function App() {
         <Route
           path="/productos"
           element={
-            <IsAnon>
+            <>
               <ProductPage />
-            </IsAnon>
+            </>
           }
         />
         <Route
@@ -67,9 +67,9 @@ function App() {
         <Route
           path="/crear-producto"
           element={
-            <IsAnon>
+            <IsPrivate>
               <CreateProduct />
-            </IsAnon>
+            </IsPrivate>
           }
         />
       </Routes>

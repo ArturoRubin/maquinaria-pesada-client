@@ -1,5 +1,8 @@
 import './Products.css';
 import Product from '../Product/Product';
+import { useState, useEffect } from "react";
+import productService from "../../services/product.service";
+import { Link, useNavigate } from "react-router-dom";
 const productsDummy = [
     {
         id: 1,
@@ -88,14 +91,48 @@ const productsDummy = [
 
 ];
 
-function Products(){
-    const products = productsDummy.map(
+
+
+function Products() {
+    const [products, setProducts] = useState([]);
+    const getProducts = products.map(
         product => <Product key={product.id} product={product} />
     );
-    return(
+    // We set this effect will run only once, after the initial render
+    // by setting the empty dependency array - []
+
+    
+
+   useEffect(() => {
+        productService
+            .getAll()
+            .then((response) => {
+                let newProducts = response.data.map(product => {
+                    return {
+                        id: product._id,
+                        nombre: product.nombre,
+                        precio: product.precio,
+                        imagen: product.imagen,
+                        descripcion: product.descripcion,
+                        user: product.user
+                    }
+                })
+                console.log(newProducts);
+                setProducts(newProducts);
+                //return response;
+                // If the POST request is successful redirect to the login page
+                // navigate("/productos");  
+            })
+            .catch((error) => {
+                // If the request resolves with an error, set the error message in the state
+                //const errorDescription = error.response.data.message;
+                // setErrorMessage(errorDescription);
+            });
+    }, []); 
+    return (
         <div className='Products'>
             <div className='list'>
-                {products}
+                {getProducts}
             </div>
         </div>
     );

@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useDropzone } from 'react-dropzone';
 import './ProductForm.css'
+import productService from "../../services/product.service";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
+
 
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputNumber } from 'primereact/inputnumber';
+
+
 
 const thumbsContainer = {
   display: 'flex',
@@ -72,23 +80,33 @@ const ProductForm = () => {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
-  const [imagenes, setImagenes] = useState([]);
+  const [imagen, setImagen] = useState({});
+  const { user } = useContext(AuthContext);
 
-  const { 
+
+  const navigate = useNavigate();
+
+  const {
     getRootProps,
     getInputProps,
     isFocused,
     isDragAccept,
     isDragReject } = useDropzone({
-    accept: {
-      'image/*': []
-    },
-    onDrop: acceptedFiles => {
-      setImagenes(acceptedFiles.map(file => Object.assign(file, {
-        preview: URL.createObjectURL(file)
-      })));
-    }
-  });
+      accept: {
+        'image/*': []
+      },
+      onDrop: files => {      //Convertir el formato de la imagen a base64
+        const reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = () => {
+          setImagen(Object.assign(files[0], {
+            preview: URL.createObjectURL(files[0]),
+            base64: reader.result
+          }));
+        }
+
+      }
+    });
 
   const style = useMemo(() => ({
     ...baseStyle,
@@ -101,27 +119,56 @@ const ProductForm = () => {
     isDragReject
   ]);
 
-  const thumbs = imagenes.map(file => (
-    <div style={thumb} key={file.name}>
+  const thumbs =
+    <div style={thumb}>
       <div style={thumbInner}>
         <img
-          src={file.preview}
+          src={imagen.preview}
           style={img}
           // Revoke data uri after image is loaded
-          onLoad={() => { URL.revokeObjectURL(file.preview) }}
+          onLoad={() => { URL.revokeObjectURL(imagen.preview) }}
         />
       </div>
     </div>
-  ));
+    ;
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); //evitar que se recargue la página
-    // Envía los datos del producto y las imágenes al servidor
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the request body
+    const requestBody = { nombre, descripcion, precio };
+    requestBody.imagen = imagen.base64;
+    requestBody.user = user._id;
+    console.log(requestBody);
+    console.log(user);
+
+    // Send a request to the server using axios
+
+    /*const authToken = localStorage.getItem("authToken");
+    axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/auth/signup`, 
+      requestBody, 
+      { headers: { Authorization: `Bearer ${authToken}` },
+    })
+    .then((response) => {}) */
+
+
+    // Or using a service
+    productService
+      .createOne(requestBody)
+      .then((response) => {
+        // If the POST request is successful redirect to the login page
+        navigate("/productos");
+      })
+      .catch((error) => {
+        // If the request resolves with an error, set the error message in the state
+        //const errorDescription = error.response.data.message;
+        // setErrorMessage(errorDescription);
+      });
   };
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => imagenes.forEach(file => URL.revokeObjectURL(file.preview));
+    return () => URL.revokeObjectURL(imagen.preview);
   }, []);
 
   return (
@@ -145,11 +192,11 @@ const ProductForm = () => {
             <section className="container">
               <div {...getRootProps({ style })}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Arrastra o selecciona archivos</p>
               </div>
-              <aside style={thumbsContainer}>
+              {imagen.preview && (<aside style={thumbsContainer}>
                 {thumbs}
-              </aside>
+              </aside>)}
             </section>
           </div>
           <div className="submit-button">

@@ -20,12 +20,15 @@ function Navbar() {
 
         {isLoggedIn && (
           <>
-            <a onClick={logOutUser}>Cerrar Sesión</a>
+            <a className="mx-3" onClick={logOutUser}>Cerrar Sesión</a>
             <Link to="/perfil">
               Perfil
               {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
             </Link>
-            <span>{user && user.name}</span>
+            <span className="mx-3 ">{user && user.name}</span>
+            <Link to="/crear-producto">
+              Crear Producto
+            </Link>
           </>
         )}
 
@@ -37,9 +40,7 @@ function Navbar() {
             <Link className="mx-3" to="/iniciar-sesion">
               Iniciar Sesión
             </Link>
-            <Link to="/crear-producto">
-              Crear Producto
-            </Link>
+            
           </>
         )}
       </div>
