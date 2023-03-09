@@ -66,7 +66,7 @@ function LoginPage() {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p>¿No tienes una cuenta?</p>
-        <Link to={"/signup"}> Registrarse</Link>
+        <Link to={"/registrarse"}> Registrarse</Link>
       </div>
 
     </div>

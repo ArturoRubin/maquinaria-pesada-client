@@ -10,8 +10,8 @@ function Navbar() {
 
   return (
     <nav className="Navbar">
-      <div className="navbar-title">
-        <Link to="/"> Renta Maquinaria</Link>
+      <div className="navbar-title mx-3">
+        <Link to="/"> Maquinaria México</Link>
       </div>
       <div className="navbar-options">
         <Link className="mr-3"to="/productos">
@@ -21,14 +21,13 @@ function Navbar() {
         {isLoggedIn && (
           <>
             <a className="mx-3" onClick={logOutUser}>Cerrar Sesión</a>
-            <Link to="/perfil">
+            {/*<Link to="/perfil">
               Perfil
-              {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-            </Link>
-            <span className="mx-3 ">{user && user.name}</span>
+            </Link> */}
             <Link to="/crear-producto">
               Crear Producto
             </Link>
+            <span className="mx-3  ">{user && user.name}</span>
           </>
         )}
 

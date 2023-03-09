@@ -34,8 +34,8 @@ function HomePage() {
     setImages(
       [
         'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
-        'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
-        'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
+        'https://www.madisa.com/wp-content/uploads/2016/12/camiones_en_venta_camiones_en_renta.jpg',
+        'https://www.arqhys.com/wp-content/uploads/2012/12/ejemplos-de-Retroexcavadora-4.jpg',
         'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
         'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
         'https://triton.com.pe/wp-content/uploads/2019/08/triton-tipos-maquinaria-pesada-comunes.jpg',
@@ -57,8 +57,8 @@ function HomePage() {
       <Jumbotron />
       <TrustInUs />
       
-      <div className="card">
-        <h1 className='mt-5'>Productos destacados</h1>
+      <div className="card ">
+        <h1 className='mt-5 ml-8'>Productos destacados</h1>
         <Carousel value={images} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={imageTemplate} />
         <AnimationText />
       </div>
