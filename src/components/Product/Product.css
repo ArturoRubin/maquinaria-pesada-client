@@ -8,6 +8,7 @@
     height: 150px;
     width: 100%;
     object-fit: contain;
+    margin-top: 20px;
 }
 
 .Product .p-card-title{

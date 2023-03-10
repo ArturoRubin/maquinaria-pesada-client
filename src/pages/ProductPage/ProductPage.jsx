@@ -4,7 +4,7 @@ import Products from "../../components/Products/Products";
 
 function ProductPage(){
     return(
-        <div>
+        <div className="ProductPage">
             <Products />
         </div>
     );
